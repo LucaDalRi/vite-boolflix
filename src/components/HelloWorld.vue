@@ -1,6 +1,11 @@
 <script>
 export default {
   name: 'NomeApp',
+  data() {
+    return {
+
+    };
+  },
 }
 </script>
 
