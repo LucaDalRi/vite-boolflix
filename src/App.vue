@@ -1,24 +1,28 @@
 <script>
-import { store } from './store';
-import NomeApp from './components/HelloWorld.vue';
+import AppHeader from './components/AppHeader.vue';
+import AppMain from './components/AppMain.vue';
 
 export default {
   name: "App",
   components: {
-    NomeApp,
+    AppHeader,
+    AppMain,
   },
   data() {
     return {
-      store
     }
-  }
+  },
+  methods: {
+
+  },
 
 };
 </script>
 
 <template>
 
-  <NomeApp />
+  <AppHeader />
+  <AppMain />
 
 </template>
 
