@@ -22,43 +22,43 @@ export default {
         <h2>
             Film
         </h2>
-        <div v-for="(film, index) in store.rispostaApiMovie[0]">
+        <div v-for="(film, index) in this.store.rispostaApiMovie">
             <h4>
                 <mark>Titolo</mark>
-                {{ store.rispostaApiMovie[0][index].title }}
+                {{ film.title }}
                 <mark>Titolo Originale</mark>
-                {{ store.rispostaApiMovie[0][index].original_title }}
+                {{ film.original_title }}
                 <mark>Lingua</mark>
-                <span class="fi" :class="'fi-' + store.rispostaApiMovie[0][index].original_language"></span>
-                {{ store.rispostaApiMovie[0][index].original_language }}
+                <span class="fi" :class="'fi-' + film.original_language"></span>
+                {{ film.original_language }}
                 <mark>Voto</mark>
-                {{ store.rispostaApiMovie[0][index].vote_average }}
+                {{ film.vote_average }}
                 <!-- devo trovare il modo di dare le stelle in base al voto -->
                 {{ store.votiMovie[index] }}
                 <div>
-                    <img :src="'https://image.tmdb.org/t/p/' + 'w342' + store.rispostaApiMovie[0][index].poster_path"
-                        :alt="store.rispostaApiMovie[0][index].title">
+                    <img :src="'https://image.tmdb.org/t/p/' + 'w342' + film.poster_path"
+                        :alt="film.title">
                 </div>
             </h4>
         </div>
+        <h2>
+            Serie tv
+        </h2>
         <div>
-            <h2>
-                Serie tv
-            </h2>
-            <div v-for="(film, index) in store.rispostaApiTv[0]">
+            <div v-for="(tv, index) in this.store.rispostaApiTv">
                 <h4>
                     <mark>Titolo</mark>
-                    {{ store.rispostaApiTv[0][index].name }}
+                    {{ tv.name }}
                     <mark>Titolo Originale</mark>
-                    {{ store.rispostaApiTv[0][index].original_name }}
+                    {{ tv.original_name }}
                     <mark>Lingua</mark>
-                    <span class="fi" :class="'fi-' + store.rispostaApiTv[0][index].original_language"></span>
-                    {{ store.rispostaApiTv[0][index].original_language }}
+                    <span class="fi" :class="'fi-' + tv.original_language"></span>
+                    {{ tv.original_language }}
                     <mark>Voto</mark>
-                    {{ store.rispostaApiTv[0][index].vote_average }}
+                    {{ tv.vote_average }}
                     <div>
-                        <img :src="'https://image.tmdb.org/t/p/' + 'w342' + store.rispostaApiTv[0][index].poster_path"
-                            :alt="store.rispostaApiTv[0][index].name">
+                        <img :src="'https://image.tmdb.org/t/p/' + 'w342' + tv.poster_path"
+                            :alt="tv.name">
                     </div>
                 </h4>
             </div>
