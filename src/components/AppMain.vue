@@ -17,53 +17,6 @@ export default {
 </script>
 
 <template>
-    <!-- <div class="containerMn"> -->
-    <!-- <div v-for="(film, index) in this.store.rispostaApiMovie" class="card">
-            <h4>
-                <mark>Titolo</mark>
-                {{ film.title }}
-                <mark>Titolo Originale</mark>
-                {{ film.original_title }}
-                <mark>Lingua</mark>
-                <span class="fi" :class="'fi-' + film.original_language"></span>
-                <mark>Voto</mark>
-                <span v-for="i in store.votiMovie">
-                    <i class="fa-solid fa-star"></i>
-                </span>
-                <span v-for="i in (5 - store.votiMovie)">
-                    <i class="fa-regular fa-star"></i>
-                </span>
-                <div>
-                    <img :src="'https://image.tmdb.org/t/p/' + 'w342' + film.poster_path" :alt="film.title">
-                </div>
-            </h4>
-        </div> -->
-    <!-- <h2>
-            Serie tv
-        </h2>
-        <div>
-            <div v-for="(tv, index) in this.store.rispostaApiTv">
-                <h4>
-                    <mark>Titolo</mark>
-                    {{ tv.name }}
-                    <mark>Titolo Originale</mark>
-                    {{ tv.original_name }}
-                    <mark>Lingua</mark>
-                    <span class="fi" :class="'fi-' + tv.original_language"></span>
-                    {{ tv.original_language }}
-                    <mark>Voto</mark>
-                    <span v-for="i in store.votiTv">
-                        <i class="fa-solid fa-star"></i>
-                    </span>
-                    <span v-for="i in (5 - store.votiTv)">
-                        <i class="fa-regular fa-star"></i>
-                    </span>
-                    <div>
-                        <img :src="'https://image.tmdb.org/t/p/' + 'w342' + tv.poster_path" :alt="tv.name">
-                    </div>
-                </h4>
-            </div>
-        </div> -->
     <div class="containerMain">
         <div>
             <h2>
@@ -71,8 +24,23 @@ export default {
             </h2>
         </div>
         <div class="containerCards">
-            <div class="card" v-for="(film, index) in this.store.rispostaApiMovie">
-                <img :src="'https://image.tmdb.org/t/p/' + 'w342' + film.poster_path" :alt="film.title">
+            <div class="flip-card" v-for="(film, index) in this.store.rispostaApiMovie">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img :src="'https://image.tmdb.org/t/p/' + 'w342' + film.poster_path" :alt="film.title">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Titolo: {{ film.title }}</p>
+                        <p>Titolo Originale: {{ film.original_title }}</p>
+                        <span>Voto: </span>
+                        <span v-for="i in store.votiMovie">
+                            <i class="fa-solid fa-star"></i>
+                        </span>
+                        <span v-for="i in (5 - store.votiMovie)">
+                            <i class="fa-regular fa-star"></i>
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
 
@@ -82,25 +50,79 @@ export default {
             </h2>
         </div>
         <div class="containerCards">
-            <div class="card" v-for="(tv, index) in this.store.rispostaApiTv">
-                <img :src="'https://image.tmdb.org/t/p/' + 'w342' + tv.poster_path" :alt="tv.name">
+            <div class="flip-card" v-for="(tv, index) in this.store.rispostaApiTv">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img :src="'https://image.tmdb.org/t/p/' + 'w342' + tv.poster_path" :alt="tv.name">
+                    </div>
+                    <div class="flip-card-back">
+                        <p>Titolo: {{ tv.name }}</p>
+                        <p>Titolo Originale: {{ tv.original_name }}</p>
+                        <p>Voto: </p>
+                        <span v-for="index in store.votiTv">
+                            <i class="fa-solid fa-star"></i>
+                        </span>
+                        <span v-for="index in (5 - store.votiTv)">
+                            <i class="fa-regular fa-star"></i>
+                        </span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <!-- </div> -->
 
 </template>
 
 <style lang="scss" scoped>
-* {
-    border: 1px dashed red;
+.flip-card {
+    background-color: transparent;
+    height: 300px;
+    width: calc(100% / 10);
+    margin: 10px;
+    perspective: 1000px;
+
 }
 
-img {
-    width: 80px;
-    height: 100px;
+.flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
 }
 
+.flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    border: 2px solid black;
+}
+
+.flip-card-front{
+    background-image: url(../assets/fallbackImg.gif);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position-y: center;
+    background-color: white;
+}
+.flip-card-front img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.flip-card-back {
+    background-color: black;
+    color: white;
+    transform: rotateY(180deg);
+}
 .fa-solid {
     color: rgb(255, 208, 0);
 }
@@ -109,6 +131,12 @@ img {
     min-height: calc(100vh - 80px);
     width: 100vw;
     overflow-y: scroll;
+    background-color: gray;
+    h2{
+        text-align: center;
+        font-size: 2em;
+        margin: 10px 0 10px 0;
+    }
 }
 
 .containerCards {
@@ -116,21 +144,5 @@ img {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-
-    .card {
-        height: 300px;
-        width: calc(100% / 10);
-        margin: 10px;
-        & :hover{
-            filter: brightness(0.3);
-            
-        }
-
-        img {
-            height: 100%;
-            width: 100%;
-            object-fit: cover;
-        }
-    }
 }
 </style>

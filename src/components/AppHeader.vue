@@ -79,6 +79,7 @@ export default {
   justify-content: space-between;
   height: 80px;
   padding: 0 20px 0 20px;
+  background-color: black;
 
   #logo {
     color: red;
