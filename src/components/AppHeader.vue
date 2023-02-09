@@ -14,19 +14,19 @@ export default {
   methods: {
     btnSearch() {
       this.store.rispostaApiMovie = [],
-      this.store.rispostaApiTv = [],
+        this.store.rispostaApiTv = [],
         this.apiRequestUserMovie = ('https://api.themoviedb.org/3/search/movie?api_key=24435e5d965dae03c4aaa6c71f82d8ad&query=' + this.inputSearch.toLowerCase().replaceAll(' ', '+'));
       axios
         .get(this.apiRequestUserMovie)
         .then((request) => {
 
-          this.store.rispostaApiMovie = request.data.results 
+          this.store.rispostaApiMovie = request.data.results
           console.log(this.store.rispostaApiMovie)
 
           // conversione voti scala 5 e push in store.js
-          for ( let i = 0; i < this.store.rispostaApiMovie.length; i++) {
+          for (let i = 0; i < this.store.rispostaApiMovie.length; i++) {
             let votiFilm = this.store.rispostaApiMovie[i].vote_average
-            votiFilm = Math.floor(votiFilm / 2)
+            votiFilm = Math.ceil(votiFilm / 2)
             this.store.votiMovie = votiFilm
           }
         });
@@ -38,6 +38,12 @@ export default {
 
           this.store.rispostaApiTv = request.data.results
           console.log(this.store.rispostaApiTv)
+
+          for (let i = 0; i < this.store.rispostaApiTv.length; i++) {
+            let votiTv = this.store.rispostaApiTv[i].vote_average
+            votiTv = Math.ceil(votiTv / 2)
+            this.store.votiTv = votiTv
+          }
 
         })
     }

@@ -32,12 +32,14 @@ export default {
                 <span class="fi" :class="'fi-' + film.original_language"></span>
                 {{ film.original_language }}
                 <mark>Voto</mark>
-                {{ film.vote_average }}
-                <!-- devo trovare il modo di dare le stelle in base al voto -->
-                {{ store.votiMovie[index] }}
+                <span v-for="i in store.votiMovie">
+                    ★
+                </span>
+                <span v-for="i in (5 - store.votiMovie)">
+                    ☆
+                </span>
                 <div>
-                    <img :src="'https://image.tmdb.org/t/p/' + 'w342' + film.poster_path"
-                        :alt="film.title">
+                    <img :src="'https://image.tmdb.org/t/p/' + 'w342' + film.poster_path" :alt="film.title">
                 </div>
             </h4>
         </div>
@@ -55,10 +57,14 @@ export default {
                     <span class="fi" :class="'fi-' + tv.original_language"></span>
                     {{ tv.original_language }}
                     <mark>Voto</mark>
-                    {{ tv.vote_average }}
+                    <span v-for="i in store.votiTv">
+                        ★
+                    </span>
+                    <span v-for="i in (5 - store.votiTv)">
+                        ☆
+                    </span>
                     <div>
-                        <img :src="'https://image.tmdb.org/t/p/' + 'w342' + tv.poster_path"
-                            :alt="tv.name">
+                        <img :src="'https://image.tmdb.org/t/p/' + 'w342' + tv.poster_path" :alt="tv.name">
                     </div>
                 </h4>
             </div>
