@@ -58,20 +58,41 @@ export default {
 <template>
 
   <div class="containerHeader">
-    <div>
+    <div id="logo">
       <h1>
         BOOLFLIX
       </h1>
     </div>
-    <div>
+    <div id="searchbar">
       <input placeholder="Cosa Vuoi Cercare?" type="search" name="TitleSearch" id="TitleSearch" v-model="inputSearch"
         @keyup.enter="btnSearch()">
-      <button @click="btnSearch()">Cerca</button>
+      <button @click="btnSearch()"><i class="fa-solid fa-xl fa-magnifying-glass"></i></button>
     </div>
   </div>
 
 </template>
 
 <style lang="scss" scoped>
+.containerHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 80px;
+  padding: 0 20px 0 20px;
 
+  #logo {
+    color: red;
+  }
+  #searchbar{
+    #TitleSearch{
+      height: 40px;
+      text-align: center;
+    }
+    button{
+      height: 40px;
+      width: 40px;
+      
+    }
+  }
+}
 </style>
