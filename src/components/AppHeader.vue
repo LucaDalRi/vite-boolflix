@@ -47,11 +47,7 @@ export default {
 
         })
     }
-  },
-  mounted() {
-
-
-  },
+  }
 }
 </script>
 
@@ -84,15 +80,27 @@ export default {
   #logo {
     color: red;
   }
-  #searchbar{
-    #TitleSearch{
+
+  #searchbar {
+    #TitleSearch {
       height: 40px;
       text-align: center;
+      background-color: gray;
+      border: 0px;
+      border-radius: 30px;
+      margin-right: 20px;
+      color: white;
+      outline: none;
+
     }
-    button{
+
+    button {
       height: 40px;
       width: 40px;
-      
+      background-color: transparent;
+      color: white;
+      border: none;
+
     }
   }
 }
