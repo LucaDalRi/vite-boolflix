@@ -55,14 +55,16 @@ export default {
 
   <div class="containerHeader">
     <div id="logo">
-      <h1>
-        BOOLFLIX
-      </h1>
+      <img src="../assets/logo.png" alt="Logo Boolflix">
     </div>
     <div id="searchbar">
-      <input placeholder="Cosa Vuoi Cercare?" type="search" name="TitleSearch" id="TitleSearch" v-model="inputSearch"
-        @keyup.enter="btnSearch()">
       <button @click="btnSearch()"><i class="fa-solid fa-xl fa-magnifying-glass"></i></button>
+      <input placeholder="Cosa Vuoi Cercare?" type="search" name="TitleSearch" id="TitleSearch" v-model="inputSearch"
+      @keyup.enter="btnSearch()">
+      <div>
+        <img src="../assets/iconaProfilo.jpg" alt="">
+      </div>
+      <p>Luca <i class="fa-solid fa-caret-down"></i></p>
     </div>
   </div>
 
@@ -76,19 +78,29 @@ export default {
   height: 80px;
   padding: 0 20px 0 20px;
   background-color: black;
+  p{
+    color: white;
+    margin-left: 20px;
+  }
 
-  #logo {
-    color: red;
+  #logo img {
+    height: 60px; 
   }
 
   #searchbar {
+    display: flex;
+    align-items: center;
+    img{
+      margin-left: 20px;
+      height: 40px;
+    }
     #TitleSearch {
       height: 40px;
       text-align: center;
       background-color: gray;
       border: 0px;
       border-radius: 30px;
-      margin-right: 20px;
+      margin-left: 5px;
       color: white;
       outline: none;
 

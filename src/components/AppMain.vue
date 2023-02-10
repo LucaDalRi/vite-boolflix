@@ -143,12 +143,13 @@ export default {
 
 .containerMain {
     overflow-y: hidden;
-    background-color: gray;
+    background-color: rgb(46, 44, 44);
 
     h2 {
-        text-align: center;
+        padding-left: 10px;
         font-size: 2em;
         margin: 10px 0 10px 0;
+        color: #DB202C;
     }
 }
 
