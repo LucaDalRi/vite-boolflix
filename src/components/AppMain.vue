@@ -43,7 +43,7 @@ export default {
                         </span>
                         <br>
                         <br>
-                        <p v-show="store.votiMovie.length > 0">Trama: {{ film.overview }}</p>
+                        <p v-show="store.votiTv != ''">Trama: {{ film.overview }}</p>
                     </div>
                 </div>
             </div>
@@ -74,7 +74,7 @@ export default {
                         </span>
                         <br>
                         <br>
-                        <p v-show="store.votiTv.length > 0">Trama: {{ tv.overview }}</p>
+                        <p v-show="store.votiTv != ''">Trama: {{ tv.overview }}</p>
                     </div>
                 </div>
             </div>
@@ -144,6 +144,7 @@ export default {
 .containerMain {
     overflow-y: hidden;
     background-color: rgb(46, 44, 44);
+    min-height: calc(100vh - 80px);
 
     h2 {
         padding-left: 10px;
