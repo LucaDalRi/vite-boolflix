@@ -43,7 +43,7 @@ export default {
                         </span>
                         <br>
                         <br>
-                        <p v-show="store.votiTv != ''">Trama: {{ film.overview }}</p>
+                        <p>Trama: {{ film.overview }}</p>
                     </div>
                 </div>
             </div>
@@ -74,7 +74,7 @@ export default {
                         </span>
                         <br>
                         <br>
-                        <p v-show="store.votiTv != ''">Trama: {{ tv.overview }}</p>
+                        <p>Trama: {{ tv.overview }}</p>
                     </div>
                 </div>
             </div>
